@@ -20,7 +20,7 @@ entity Status{
 }
 
 entity Developer: managed {
-  key ID: UUID;
+  key ID: String(50);
   firstName: String(100);
   lastName: String(100);
   email: String(255);

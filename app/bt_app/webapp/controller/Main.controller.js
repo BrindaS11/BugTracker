@@ -293,13 +293,13 @@ sap.ui.define([
             aFilters.forEach(filter => {
                 switch (filter.sPath) {
                     case "status_name":
-                        sap.ui.getCore().byId("idStatusSelect").setSelectedKey(filter.oValue1);
+                        sap.ui.getCore().byId("idStatusesSelect").setSelectedKey(filter.oValue1);
                         break;
                     case "priority_name":
-                        sap.ui.getCore().byId("idPrioritySelect").setSelectedKey(filter.oValue1);
+                        sap.ui.getCore().byId("idPrioritiesSelect").setSelectedKey(filter.oValue1);
                         break;
                     case "developer_ID":
-                        sap.ui.getCore().byId("idDeveloperInput").setValue(filter.oValue1);
+                        sap.ui.getCore().byId("idDevelopersSelect").setValue(filter.oValue1);
                         break;
                 }
             });
@@ -307,34 +307,34 @@ sap.ui.define([
 
         _resetFilterFields: function () {
             // Reset the Status dropdown
-            sap.ui.getCore().byId("idStatusSelect").setSelectedKey(null);
+            sap.ui.getCore().byId("idStatusesSelect").setSelectedKey(null);
 
             // Reset the Priority dropdown
-            sap.ui.getCore().byId("idPrioritySelect").setSelectedKey(null);
+            sap.ui.getCore().byId("idPrioritiesSelect").setSelectedKey(null);
 
             // Reset the Developer ID input field
-            sap.ui.getCore().byId("idDeveloperInput").setValue("");
+            sap.ui.getCore().byId("idDevelopersSelect").setSelectedKey(null);
         },
 
         onApplyButtonPress: function () {
             const aFilters = [];
 
             // Get selected status
-            const sSelectedStatus = sap.ui.getCore().byId("idStatusSelect").getSelectedKey();
+            const sSelectedStatus = sap.ui.getCore().byId("idStatusesSelect").getSelectedKey();
             if (sSelectedStatus) {
                 aFilters.push(new sap.ui.model.Filter("status_name", sap.ui.model.FilterOperator.EQ, sSelectedStatus));
             }
 
             // Get selected priority
-            const sSelectedPriority = sap.ui.getCore().byId("idPrioritySelect").getSelectedKey();
+            const sSelectedPriority = sap.ui.getCore().byId("idPrioritiesSelect").getSelectedKey();
             if (sSelectedPriority) {
                 aFilters.push(new sap.ui.model.Filter("priority_name", sap.ui.model.FilterOperator.EQ, sSelectedPriority));
             }
 
             // Get developer ID
-            const sDeveloperID = sap.ui.getCore().byId("idDeveloperInput").getValue();
-            if (sDeveloperID) {
-                aFilters.push(new sap.ui.model.Filter("developer_ID", sap.ui.model.FilterOperator.EQ, sDeveloperID));
+            const sSelectedDeveloperID = sap.ui.getCore().byId("idDevelopersSelect").getSelectedKey();
+            if (sSelectedDeveloperID) {
+                aFilters.push(new sap.ui.model.Filter("developer_ID", sap.ui.model.FilterOperator.EQ, sSelectedDeveloperID.toString()));
             }
 
             // Get the table and its binding
