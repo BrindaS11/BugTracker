@@ -1,0 +1,4 @@
+ID,firstName,lastName,email,createdAt,createdBy,modifiedAt,modifiedBy
+1,John,Doe,john.doe@example.com,2025-05-27T09:00:00Z,admin,2025-05-27T09:00:00Z,admin
+2,Jane,Smith,jane.smith@example.com,2025-05-27T09:30:00Z,admin,2025-05-27T09:30:00Z,admin
+3,Emily,Davis,emily.davis@example.com,2025-05-27T10:00:00Z,admin,2025-05-27T10:00:00Z,admin

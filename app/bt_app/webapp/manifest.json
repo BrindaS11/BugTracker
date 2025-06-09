@@ -1,0 +1,153 @@
+{
+  "_version": "1.65.0",
+  "sap.app": {
+    "id": "com.sap.btapp",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.17.5-pre-20250418140116-56106bcb3.0",
+      "toolsId": "63bc0ab6-e365-4e8b-b713-3d7cba5a67f5"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/odata/v4/bug/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "odataVersion": "4.0"
+        }
+      }
+    },
+    "crossNavigation": {
+      "inbounds": {
+        "bugtrackerapp-manage": {
+          "semanticObject": "bugtrackerapp",
+          "action": "manage",
+          "title": "{{bugtrackerapp-manage.flpTitle}}",
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          }
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": false,
+    "dependencies": {
+      "minUI5Version": "1.136.1",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "BugTrackerModel": {
+        "dataSource": "BugTrackerService",
+        "settings": {
+          "synchronizationMode": "None"
+        }
+      },
+      "MainServiceModel": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      },
+      "": {
+        "dataSource": "BugTrackerService",
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      }
+    },
+    "dataSources": {
+      "BugTrackerService": {
+        "uri": "/odata/v4/bug/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "4.0"
+        }
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "controlId": "app",
+        "controlAggregation": "pages",
+        "async": true
+      },
+      "routes": [
+        {
+          "name": "Main",
+          "pattern": "",
+          "target": "Main"
+        },
+        {
+          "name": "BugDetails",
+          "pattern": "BugDetails/{bugId}",
+          "target": "BugDetails"
+        }
+      ],
+      "targets": {
+        "Main": {
+          "viewName": "Main",
+          "viewPath": "com.sap.btapp.view",
+          "viewLevel": 1
+        },
+        "BugDetails": {
+          "viewName": "BugDetails",
+          "viewPath": "com.sap.btapp.view",
+          "viewLevel": 2
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "com.sap.btapp.view.App",
+      "type": "XML",
+      "id": "App",
+      "async": true
+    }
+  }
+}

@@ -1,0 +1,6 @@
+title,description,status_name,priority_name,developer_ID,createdAt,createdBy,modifiedAt,modifiedBy
+Login button not working,The login button does not respond when clicked,Open,High,1,2025-05-27T09:00:00Z,admin,2025-05-28T10:30:00Z,admin
+Page crashes on load,The homepage crashes when loaded in Safari browser,In Progress,Critical,2,2025-05-27T11:00:00Z,admin,2025-05-28T11:00:00Z,admin
+Incorrect password validation,Password validation allows less than 8 characters,Resolved,Medium,3,2025-05-27T12:00:00Z,admin,2025-05-28T12:00:00Z,admin
+UI misalignment on mobile,The UI is misaligned on smaller screens,Open,Low,1,2025-05-27T13:00:00Z,admin,2025-05-28T13:00:00Z,admin
+Email notifications not sent,Users are not receiving email notifications,Reopened,High,2,2025-05-27T14:00:00Z,admin,2025-05-28T14:00:00Z,admin

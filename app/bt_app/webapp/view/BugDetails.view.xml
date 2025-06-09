@@ -1,0 +1,127 @@
+<mvc:View
+    controllerName="com.sap.btapp.controller.BugDetails"
+    xmlns="sap.uxap"
+    xmlns:m="sap.m"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:mvc="sap.ui.core.mvc">
+
+    <ObjectPageLayout
+        id="ObjectPageLayout"
+        showTitleInHeaderContent="true"
+        alwaysShowContentHeader="true"
+        preserveHeaderStateOnScroll="false"
+        headerContentPinnable="true"
+        isChildPage="true"
+        upperCaseAnchorBar="false">
+
+        <!-- Header Title -->
+        <headerTitle>
+            <ObjectPageDynamicHeaderTitle>
+                <expandedHeading>
+                    <m:VBox>
+                        <m:Title text="{title}" wrapping="true" />
+                    </m:VBox>
+                </expandedHeading>
+
+                <navigationActions>
+                    <m:Button
+                        type="Transparent"
+                        icon="sap-icon://nav-back"
+                        press=".onNavBack"/>
+                </navigationActions>
+
+                <actions>
+                    <m:Button
+                        text="Edit"
+                        type="Emphasized"
+                        icon="sap-icon://edit"
+                        press=".onEditPress"/>
+                    <m:Button
+                        text="Delete"
+                        type="Negative"
+                        icon="sap-icon://delete"
+                        press=".onDeletePress"/>
+                </actions>
+            </ObjectPageDynamicHeaderTitle>
+        </headerTitle>
+
+        <!-- Header Content -->
+        <headerContent>
+            <m:FlexBox wrap="Wrap" alignItems="Center">
+                <m:VBox class="sapUiSmallMarginEnd">
+                    <!-- Priority -->
+                    <m:HBox>
+                        <m:Text text="Priority:" class="sapUiSmallMarginEnd sapMTextBold"/>
+                        <m:ObjectStatus
+                            text="{priority_name}"
+                            state="{
+                                path: 'priority_name',
+                                formatter: '.formatter.priorityState'
+                            }"/>
+                    </m:HBox>
+
+                    <!-- Status -->
+                    <m:HBox>
+                        <m:Text text="Status:" class="sapUiSmallMarginEnd sapMTextBold"/>
+                        <m:ObjectStatus
+                            text="{status_name}"
+                            state="{
+                                path: 'status_name',
+                                formatter: '.formatter.statusState'
+                            }"/>
+                    </m:HBox>
+                </m:VBox>
+            </m:FlexBox>
+        </headerContent>
+
+        <!-- Sections -->
+        <sections>
+            <!-- General Information Section -->
+            <ObjectPageSection title="General Information">
+                <subSections>
+                    <ObjectPageSubSection>
+                        <blocks>
+                            <form:SimpleForm
+                                layout="ResponsiveGridLayout"
+                                editable="false">
+                                <m:Label text="Title"/>
+                                <m:Text text="{title}"/>
+
+                                <m:Label text="Description"/>
+                                <m:Text text="{description}"/>
+
+                                <m:Label text="Status"/>
+                                <m:Text text="{status_name}"/>
+
+                                <m:Label text="Priority"/>
+                                <m:Text text="{priority_name}"/>
+
+                                <m:Label text="Developer ID"/>
+                                <m:Text text="{developer_ID}"/>
+                            </form:SimpleForm>
+                        </blocks>
+                    </ObjectPageSubSection>
+                </subSections>
+            </ObjectPageSection>
+
+            <!-- Additional Information Section -->
+            <ObjectPageSection title="Additional Information">
+                <subSections>
+                    <ObjectPageSubSection>
+                        <blocks>
+                            <form:SimpleForm
+                                layout="ResponsiveGridLayout"
+                                editable="false">
+                                <m:Label text="Created At"/>
+                                <m:Text text="{createdAt}"/>
+
+                                <m:Label text="Last Modified"/>
+                                <m:Text text="{modifiedAt}"/>
+                            </form:SimpleForm>
+                        </blocks>
+                    </ObjectPageSubSection>
+                </subSections>
+            </ObjectPageSection>
+        </sections>
+    </ObjectPageLayout>
+</mvc:View>

@@ -1,0 +1,45 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+    <Dialog title="Filter Bugs" class="sapUiContentPadding sapUiResponsivePadding sapUiSizeCompact" contentWidth="500px">
+        <content>
+            <VBox class="sapUiSmallMargin">
+                <VBox width="100%" class="sapUiSmallMarginBottom">
+                    <Label text="Status" labelFor="idStatusSelect" />
+                    <Select id="idStatusSelect" width="100%" forceSelection="false">
+                        <items>
+                            <core:Item key="Open" text="Open" />
+                            <core:Item key="In Progress" text="In Progress" />
+                            <core:Item key="Closed" text="Closed" />
+                        </items>
+                    </Select>
+                </VBox>
+
+                <VBox width="100%" class="sapUiSmallMarginBottom">
+                    <Label text="Priority" labelFor="idPrioritySelect" />
+                    <Select id="idPrioritySelect" width="100%" forceSelection="false">
+                        <items>
+                            <core:Item key="Critical" text="Critical" />
+                            <core:Item key="High" text="High" />
+                            <core:Item key="Medium" text="Medium" />
+                            <core:Item key="Low" text="Low" />
+                        </items>
+                    </Select>
+                </VBox>
+
+                <VBox width="100%" class="sapUiSmallMarginBottom">
+                        <Label text="Developer ID" labelFor="idDeveloperSelect"/>
+                        <Select id="idDeveloperSelect" placeholder="Enter Developer ID" width="100%" forceSelection="false" items="{ path: '/Developers' }">
+                            <core:Item key="{ID}" text="{name}" />
+                        </Select>
+                    </VBox>
+                </VBox>
+        </content>
+        <footer>
+            <Toolbar>
+                <ToolbarSpacer />
+                <Button text="Apply" type="Emphasized" press=".onApplyButtonPress" />
+                <Button text="Cancel" press=".onCancelButtonPress" />
+                <Button text="Clear Filter" press=".onClearFilterButtonPress" />
+            </Toolbar>
+        </footer>
+    </Dialog>
+</core:FragmentDefinition>
