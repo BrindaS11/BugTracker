@@ -1,35 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Bug Tracker App</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bug Tracker</title>
     <style>
         html, body, body > div, #container, #container-uiarea {
             height: 100%;
         }
+        #content .sapUShellApplicationContainer {
+            max-width: 100% !important;
+            width: 100% !important;
+        }
     </style>
+
+    <script>
+        window['sap-ushell-config'] = {
+            defaultRenderer: 'fiori2',
+            services: {
+                NavTargetResolution: {
+                    config: {
+                        allowTestUrlComponentConfig: true,
+                        enableClientSideTargetResolution: true
+                    }
+                }           
+            },
+            applications: {
+                "bt-app": {
+                    title: 'Bug Tracker',
+                    description: 'Bug Tracking Application',
+                    additionalInformation: 'SAPUI5.Component=com.sap.btapp',
+                    applicationType: 'URL',
+                    url: "./",
+                    navigationMode: 'embedded'
+                }
+            }
+        }
+    </script>
+
+    <script src="https://ui5.sap.com/test-resources/sap/ushell/bootstrap/sandbox.js"></script>
     <script
-        id="sap-ui-bootstrap"
-        src="https://sapui5.hana.ondemand.com/1.136.1/resources/sap-ui-core.js"
+        src="https://ui5.sap.com/resources/sap-ui-core.js"
+        data-sap-ui-libs="sap.m, sap.ushell, sap.fe.templates"
+        data-sap-ui-compatVersion="edge"
         data-sap-ui-theme="sap_horizon"
+        data-sap-ui-frameOptions="allow"
+        data-sap-ui-bindingSyntax="complex"
         data-sap-ui-resourceroots='{
             "com.sap.btapp": "./"
         }'
-        data-sap-ui-oninit="module:sap/ui/core/ComponentSupport"
-        data-sap-ui-compatVersion="edge"
-        data-sap-ui-async="true"
-        data-sap-ui-frameOptions="trusted"
     ></script>
+
+    <script>
+    sap.ui.getCore().attachInit(function() {
+        sap.ushell.Container.createRenderer().placeAt('content').then(function() {
+            setTimeout(function() {
+                $(".sapUShellApplicationContainerLimitedWidth").removeClass("sapUShellApplicationContainerLimitedWidth");
+            }, 500);
+        });
+    });
+    </script>
 </head>
-<body class="sapUiBody sapUiSizeCompact" id="content">
-    <div
-        data-sap-ui-component
-        data-name="com.sap.btapp"
-        data-id="container"
-        data-settings='{"id" : "com.sap.btapp"}'
-        data-handle-validation="true"
-    ></div>
-</body>
+<body class="sapUiBody" id="content"></body>
 </html>
